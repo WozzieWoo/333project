@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Stock - 333 STORE{% endblock %}
+
+{% block content %}
+  <!-- Cargar archivos estáticos correctamente -->
+  {% load static %}
+
+  <section class="product-grid">
+    <div class="product-card">
+      <img src="{% static 'img/merch/totebag2.png' %}" alt="Producto 1">
+      <div class="product-info">
+        <h3>tote bag 333</h3>
+        <p>$9.990</p>
+        <button>+</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'img/merch/lighterBlue.jpg' %}" alt="Producto 2">
+      <div class="product-info">
+        <h3>lightmod 333 blue</h3>
+        <p>$9.990</p>
+        <button>+</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'img/merch/lighterOrange2.png' %}" alt="Producto 3">
+      <div class="product-info">
+        <h3>lightmod 333 orange</h3>
+        <p>$9.990</p>
+        <button>+</button>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="{% static 'img/merch/lighterGreen2.png' %}" alt="Producto 3">
+      <div class="product-info">
+        <h3>lightmod 333 orange</h3>
+        <p>$9.990</p>
+        <button>+</button>
+      </div>
+    </div>
+    
+    <!-- Agrega más cartas aquí -->
+  </section>
+{% endblock %}

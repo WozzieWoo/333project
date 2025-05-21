@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Stock - 333 STORE{% endblock %}
+
+{% block content %}
+  <!-- Cargar archivos estáticos correctamente -->
+  {% load static %}
+  <section class="cart-container">
+    <h2>Tu Carrito</h2>
+
+    <div class="cart-item">
+      <img src="img/skateboard.jpg" alt="Producto" />
+      <div>Skateboard</div>
+      <div>$50.00</div>
+    </div>
+
+    <div class="cart-item">
+      <img src="img/helmet.jpg" alt="Producto" />
+      <div>Casco</div>
+      <div>$20.00</div>
+    </div>
+
+    <div class="total">
+      <span>Total</span>
+      <span>$70.00</span>
+    </div>
+
+    <button class="checkout-btn">Proceder al pago</button>
+  </section>
+{% endblock %}

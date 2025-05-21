@@ -1,0 +1,82 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}333 STORE{% endblock %}</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+  <!--<link rel="stylesheet" href="{% static 'css/styles-game.css' %}">Si tienes otro archivo CSS, mantenlo aquí -->
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="{% url 'index' %}" class="nav-icon">
+        <img src="{% static 'img/nav/home.png' %}" 
+             data-hover="{% static 'img/nav/home_red.png' %}" 
+             alt="Home">
+      </a>
+      <a href="{% url 'catalog' %}" class="nav-icon">
+        <img src="{% static 'img/nav/stock.png' %}" 
+             data-hover="{% static 'img/nav/stock_red.png' %}" 
+             alt="stock">
+      </a>
+    </div>
+        
+    
+
+    <!-- Imagen centrada -->
+    <div class="navbar-center">
+      <a href="{% url 'index' %}">
+        <img src="{% static 'img/logo.png' %}" alt="Logo 333" class="nav-logo">
+      </a>
+    </div>
+
+    <div class="navbar-right">
+      <a href="{% url 'login' %}" class="nav-link">
+        <img src="{% static 'img/nav/login.png' %}" class="cart-icon" alt="login">
+      </a>
+      <a href="{% url 'cart' %}" class="nav-link">
+        <img src="{% static 'img/cart.png' %}" class="cart-icon" alt="Carrito">
+      </a>
+    </div>    
+  </nav>
+  <div class="content">
+    <!-- Paneles laterales solo afectan el contenido, no el nav/footer -->
+    <div class="side-panels">
+      <div class="side-panel left-panel"></div>
+      <div class="side-panel right-panel"></div>
+    </div>
+  
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact us: 333@store.com | Instagram: 
+      <a href="https://www.instagram.com/threetimethree.cl" target="_blank" style="color: #ff4444;">threetimethree.cl</a>
+    </p>
+  </footer>
+  <script>
+    document.querySelectorAll('.nav-icon img').forEach(img => {
+      const originalSrc = img.src;
+      const hoverSrc = img.getAttribute('data-hover');
+  
+      if (hoverSrc) {
+        img.addEventListener('mouseover', () => {
+          img.src = hoverSrc;
+        });
+        img.addEventListener('mouseout', () => {
+          img.src = originalSrc;
+        });
+      }
+    });
+  </script>
+  
+
+</body>
+</html>

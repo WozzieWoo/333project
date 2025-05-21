@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registro - 333 STORE{% endblock %}
+
+{% block content %}
+  <section class="register-section">
+    <div class="register-container">
+      <h2>Crear Cuenta</h2>
+      <form method="POST" novalidate>
+        {% csrf_token %}
+      
+        <input type="text" name="username" placeholder="Nombre de usuario" required>
+        {{ form.username.errors }}
+      
+        <input type="password" name="password1" placeholder="Contraseña" required>
+        {{ form.password1.errors }}
+      
+        <input type="password" name="password2" placeholder="Confirmar contraseña" required>
+        {{ form.password2.errors }}
+      
+        <button type="submit">Registrarse</button>
+      </form>
+      
+    </div>
+  </section>
+{% endblock %}

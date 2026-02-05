@@ -1,7 +1,8 @@
-
 {% extends 'base.html' %}
-{% load static %}
+{% block title %}Stock - 333 STORE{% endblock %}
+
 {% block content %}
+{% load static %}
 <div class="side-panels">
   <div class="side-panel left-panel"></div>
   <div class="side-panel right-panel"></div>
@@ -12,24 +13,37 @@
   <div class="card-green"></div>
 </section>
 
-
-  <div class="carrusel-container">
-    <div class="carrusel-slider">
-      <img src="{% static 'img/PR/1.jpeg' %}" alt="Imagen 1">
-      <img src="{% static 'img/PR/2.jpeg' %}" alt="Imagen 2">
-      <img src="{% static 'img/PR/3.jpeg' %}" alt="Imagen 3">
-      <img src="{% static 'img/PR/4.jpeg' %}" alt="Imagen 4">
-      <img src="{% static 'img/PR/5.jpeg' %}" alt="Imagen 5">
-      <img src="{% static 'img/PR/1.jpeg' %}" alt="Imagen 6">
+<section class="carrusel-section">
+  <div class="container-carrusel"> <!-- CONTENEDOR CENTRAL -->
+    <div class="carrusel-container">
+      <div class="carrusel-slider">
+        <img src="{% static 'img/PR/1.jpeg' %}" alt="Imagen 1">
+        <img src="{% static 'img/PR/2.jpeg' %}" alt="Imagen 2">
+        <img src="{% static 'img/PR/3.jpeg' %}" alt="Imagen 3">
+        <img src="{% static 'img/PR/4.jpeg' %}" alt="Imagen 4">
+        <img src="{% static 'img/PR/5.jpeg' %}" alt="Imagen 5">
+        <img src="{% static 'img/PR/1.jpeg' %}" alt="Imagen 6">
+        <img src="{% static 'img/PR/6.jpeg' %}" alt="Imagen 7">
+        <img src="{% static 'img/PR/2.jpeg' %}" alt="Imagen 7">
+        <img src="{% static 'img/PR/3.jpeg' %}" alt="Imagen 7">
+        <img src="{% static 'img/PR/2.jpeg' %}" alt="Imagen 2 duplicada">
+        <img src="{% static 'img/PR/6.jpeg' %}" alt="Imagen 3 duplicada">
+      </div>
     </div>
   </div>
-  <a href="game.html" style="text-decoration: none; color: inherit;">
-    <section class="promo-section-lower">
-      <div class="promo-text">
-        <h2>OBTEN DESCUENTOS AL OBTENER PUNTOS EN SKATE MASTER</h2>
-        <p>Canjea tus puntos por increíbles recompensas y beneficios dentro de nuestra tienda en línea.</p>
-      </div>
-    </section>
-  </a>
-  
+</section>
+
+
+<a href="game.html" class="promo-link">
+  <section class="promo-section-lower">
+    <div class="promo-text">
+      <h2>OBTEN DESCUENTOS AL OBTENER PUNTOS EN SKATE MASTER</h2>
+      <p>
+        Canjea tus puntos por increíbles recompensas y beneficios dentro de nuestra tienda en línea.
+      </p>
+    </div>
+  </section>
+</a>
+
+
 {% endblock %}

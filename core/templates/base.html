@@ -15,67 +15,102 @@
   <nav class="navbar">
     <div class="navbar-left">
       <a href="{% url 'index' %}" class="nav-icon">
-        <img src="{% static 'img/nav/home.png' %}" 
-             data-hover="{% static 'img/nav/home_red.png' %}" 
+        <img src="{% static 'img/nav/HOME.png' %}" 
+             data-hover1="{% static 'img/nav/HOME rojo.png' %}" 
+             data-hover2="{% static 'img/nav/HOME rojo_rojo.png' %}" 
              alt="Home">
-      </a>
+      </a>      
       <a href="{% url 'catalog' %}" class="nav-icon">
-        <img src="{% static 'img/nav/stock.png' %}" 
-             data-hover="{% static 'img/nav/stock_red.png' %}" 
-             alt="stock">
+        <img src="{% static 'img/nav/STOCK.png' %}" 
+             data-hover1="{% static 'img/nav/STOCK rojo.png' %}" 
+             data-hover2="{% static 'img/nav/STOCK rojo_rojo.png' %}" 
+             alt="catalog">
+      </a>
+      <a href="{% url 'comunity' %}" class="nav-icon">
+        <img src="{% static 'img/nav/DISCORD.png' %}" 
+             data-hover1="{% static 'img/nav/DISCORD rojo.png' %}" 
+             data-hover2="{% static 'img/nav/DISCORD rojo_rojo.png' %}" 
+             alt="comunity">
       </a>
     </div>
-        
-    
 
     <!-- Imagen centrada -->
     <div class="navbar-center">
-      <a href="{% url 'index' %}">
-        <img src="{% static 'img/logo.png' %}" alt="Logo 333" class="nav-logo">
+      <a href="{% url 'index' %}" class="nav-icon">
+        <img src="{% static 'img/nav/THREE TIME THREE.png' %}" 
+             data-hover1="{% static 'img/nav/THREE TIME THREE rojo.png' %}" 
+             data-hover2="{% static 'img/nav/THREE TIME THREE rojo_rojo.png' %}" 
+             alt="index">
       </a>
     </div>
 
     <div class="navbar-right">
       <a href="{% url 'login' %}" class="nav-link">
-        <img src="{% static 'img/nav/login.png' %}" class="cart-icon" alt="login">
+        <img src="{% static 'img/logo.png' %}" class="cart-icon" alt="login">
       </a>
-      <a href="{% url 'cart' %}" class="nav-link">
-        <img src="{% static 'img/cart.png' %}" class="cart-icon" alt="Carrito">
+      <a href="{% url 'cart' %}" class="nav-icon">
+        <img src="{% static 'img/nav/CARRO.png' %}" 
+             data-hover1="{% static 'img/nav/CARRO rojo.png' %}" 
+             data-hover2="{% static 'img/nav/CARRO rojo_rojo.png' %}" 
+             alt="cart">
       </a>
     </div>    
   </nav>
   <div class="content">
     <!-- Paneles laterales solo afectan el contenido, no el nav/footer -->
     <div class="side-panels">
-      <div class="side-panel left-panel"></div>
-      <div class="side-panel right-panel"></div>
-    </div>
+      <div class="side-panel left-panel">
+        <img src="{% static 'img/nav/w 333 crome 1.jpg' %}" alt="Lateral Izquierdo" class="side-image">
+      </div>
+      <div class="side-panel right-panel">
+        <img src="{% static 'img/nav/w 333 crome 1.jpg' %}" alt="Lateral Derecho" class="side-image">
+      </div>
+  </div>
+    
   
     {% block content %}
     {% endblock %}
   </div>
 
   <!-- Footer -->
-  <footer>
-    <p>Contact us: 333@store.com | Instagram: 
-      <a href="https://www.instagram.com/threetimethree.cl" target="_blank" style="color: #ff4444;">threetimethree.cl</a>
-    </p>
-  </footer>
+<footer>
+  <p>
+    Contact us: 333@store.com |
+    Instagram:
+    <a href="https://www.instagram.com/threetimethree.cl" target="_blank" style="color: #ff4444;">
+      threetimethree.cl
+    </a> |
+    <a href="{% url 'comunity' %}" class="nav-icon">
+      <img src="{% static 'img/nav/DISCORD.png' %}" 
+           data-hover1="{% static 'img/nav/DISCORD rojo.png' %}" 
+           data-hover2="{% static 'img/nav/DISCORD rojo_rojo.png' %}" 
+           alt="comunity" style="height: 24px; vertical-align: middle;">
+    </a>
+  </p>
+</footer>
+
   <script>
     document.querySelectorAll('.nav-icon img').forEach(img => {
       const originalSrc = img.src;
-      const hoverSrc = img.getAttribute('data-hover');
+      const hover1 = img.getAttribute('data-hover1');
+      const hover2 = img.getAttribute('data-hover2');
+      let toggle = false;
   
-      if (hoverSrc) {
-        img.addEventListener('mouseover', () => {
-          img.src = hoverSrc;
+      if (hover1 && hover2) {
+        img.addEventListener('mouseenter', () => {
+          toggle = !toggle;
+          img.src = toggle ? hover1 : hover2;
         });
-        img.addEventListener('mouseout', () => {
+        img.addEventListener('mouseleave', () => {
           img.src = originalSrc;
         });
+      } else if (hover1) {
+        img.addEventListener('mouseenter', () => img.src = hover1);
+        img.addEventListener('mouseleave', () => img.src = originalSrc);
       }
     });
   </script>
+  
   
 
 </body>

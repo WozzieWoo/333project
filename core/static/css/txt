@@ -7,16 +7,33 @@ html, body {
   font-family: sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
+}
+
+/* PROMO / PORTADA */
+.promo-section {
+  background-color: #000;
+  color: white;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  padding: 50px 30px;
+  position: relative;
 }
 
-:root {
-  /* deja espacio libre para el footer; ajusta si cambias su altura */
-  --footer-gap: 140px;
+.promo-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0,0,0,0));
+  background-image: url('static/img/skate_pro2.png');
+  background-size: cover;
+  background-position: center top;
+  z-index: 0;
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
 }
-
-
 
 .promo-text {
   margin-left: auto;
@@ -32,23 +49,45 @@ html, body {
 /* BLOQUES BLANCOS LATERALES */
 
 .side-panel {
-  position: absolute; 
-  width: 15vw; /* ancho */
+  position: fixed; /* Para que quede fijo a la izquierda y derecha */
   top: 0;
-  bottom: var(--footer-gap);
+  bottom: 0;
+  width: 15vw;
+  background-color: white;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
   display: flex;
+  align-items: center;       /* Centrar verticalmente */
   justify-content: center;   /* Centrar horizontalmente */
-  overflow: hidden;         /* Para que no corte la imagen */
-  z-index: 2;               /* Encima de fondos de secciones, debajo del nav */
-  pointer-events: none;      /* Que no bloquee clics en el centro */
+  overflow: visible;         /* Para que no corte la imagen */
+  z-index: 10;               /* Sobre el contenido pero debajo del nav si quieres */
 }
 
 .side-image {
-  width: 140%;    /* Que la imagen se adapte al contenedor */
-  height: 100%;
-  max-height: none;
-  object-fit: cover;    /* cubrir todo el alto disponible */
-  /*transform: rotate(90deg);  /* Rotar la imagen 90 grados */
+  max-width: 1000px;    /* Que la imagen se adapte al contenedor */
+  max-height: 885px;    /* Máximo 80% del alto del panel */
+  object-fit: contain;
+  /*transform: rotate(90deg);   Rotar la imagen 90 grados */
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.side-panels {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.side-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15vw;
+  background-color: white;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
 .left-panel {
@@ -68,10 +107,9 @@ html, body {
 }
 
 .container-carrusel {
-  max-width: 1400px; /* o el ancho que manejes en tu sitio */
+  max-width: 1175px; /* o el ancho que manejes en tu sitio */
   margin: 0 auto;
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 .carrusel-container {
@@ -105,11 +143,6 @@ html, body {
   justify-content: space-between;
   align-items: center;
 }
-.navbar-left {
-  padding-left: 15px;
-  z-index: 100;
-  position: relative;
-}
 
 .nav-logo {
   height: 150px;
@@ -133,21 +166,6 @@ html, body {
   left: 50%;
   transform: translateX(-50%);
 }
-.navbar a {
-  text-decoration: none;     /* quita subrayado */
-  outline: none;             /* quita borde al hacer focus */
-  color: white;              /* asegura el color del texto */
-}
-
-.navbar a:visited {
-  color: white;              /* evita el color azul al estar visitado */
-}
-
-.navbar a:focus {
-  outline: none;             /* quita borde azul cuando está enfocado */
-  box-shadow: none;          /* quita cualquier otro contorno */
-}
-
 
 /* CARRITO */
 .cart-icon {
@@ -226,9 +244,8 @@ footer {
 
 .content {
   position: relative;
-  flex: 1;
+  min-height: calc(100vh - 200px); /* ajusta según altura nav + footer */
   padding: 60px 0; /* para que el contenido no se superponga a los paneles */
-  z-index: 1;      /* por encima de los paneles laterales */
 }
 
 /* ----------------------------------------------- */
@@ -256,27 +273,7 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: relative;
-  margin-top: 35px;
-  
 }
-
-.promo-section-lower::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0,0,0,0));
-  background-image: url('/static/img/skate_pro2.png');
-  background-size: cover;
-  background-position: center top;
-  z-index: 0;
-  mask-image: linear-gradient(to right, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-}
-
 
 .promo-section-lower h2 {
   font-size: 24px;
@@ -295,21 +292,7 @@ footer {
   box-sizing: border-box;
   justify-items: center;
 }
-.promo-section::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0,0,0,0));
-  background-image: url('/static/img/skate_pro2.png');
-  background-size: cover;
-  background-position: center top;
-  z-index: 0;
-  mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
-}
+
 .product-card {
   position: relative;
   width: 100%;
@@ -431,60 +414,4 @@ footer {
 
 .register-container button:hover {
   background-color: #cc0000;
-}
-
-/*DETALLE DE PRODUCTOS*/
-
-.product-detail {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 60px 15vw;
-  color: white;
-}
-
-.product-image img {
-  width: 400px;
-  height: 400px;
-  object-fit: contain;
-  border: 2px solid white;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-}
-
-.product-info {
-  max-width: 400px;
-}
-
-.product-info h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.price {
-  font-size: 24px;
-  color: #ff4444;
-}
-
-.description {
-  margin-top: 20px;
-}
-
-.add-to-cart {
-  margin-top: 30px;
-  background-color: #ff3333;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.add-to-cart:hover {
-  background-color: #cc0000;
-}
-
-.out-of-stock {
-  color: #999;
-  font-style: italic;
 }

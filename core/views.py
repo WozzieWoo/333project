@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 def index(request):
     return render(request, 'index.html')  # O el nombre correcto del archivo HTML
@@ -16,6 +17,10 @@ def login(request):
 
 def register(request):
     return render(request, 'registro.html')
+
+def prueba_error(request):
+    raise Http404("Página no encontrada")
+
 
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
